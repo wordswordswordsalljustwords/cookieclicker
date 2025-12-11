@@ -270,5 +270,12 @@ var App=typeof App==='undefined'?0:App;
 
 </div>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        Game.registerHook('load', function () {
+            Game.LoadMod('https://cookiemonsterteam.github.io/CookieMonster/dist/CookieMonster.js');
+        });
+    });
+    </script>
 </body>
 </html>
