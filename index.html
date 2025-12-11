@@ -43,10 +43,17 @@ var App=typeof App==='undefined'?0:App;
 </script>
 
 <link href="style.css?v=9" rel="stylesheet" type="text/css">
-<script  src="main.js?v=10"></script>
+<script src="main.js?v=10"></script>
+
+<!-- Load Cookie Monster Mod -->
+<script>
+(function () {
+    Game.LoadMod('https://cookiemonsterteam.github.io/CookieMonster/dist/CookieMonster.js');
+})();
+</script>
 
 <!-- ad -->
-<script src="showads.js"></script><!-- this just detects adblockers so we can adjust the layout and play nice -->
+<script src="showads.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({
