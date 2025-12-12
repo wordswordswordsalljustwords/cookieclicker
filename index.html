@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <!-- external -->
@@ -44,6 +44,35 @@ var App=typeof App==='undefined'?0:App;
 
 <link href="style.css?v=9" rel="stylesheet" type="text/css">
 <script src="main.js?v=10"></script>
+
+<!-- CookieMonster loader: waits for the Cookie Clicker Game object, then loads CookieMonster as an ES module (pinned to a commit) -->
+<script>
+(function(){
+  // Provide the framework placeholder used by CookieMonster to avoid undefined errors.
+  window.cookieMonsterFrameworkData = window.cookieMonsterFrameworkData || { isInitializing: true };
+
+  // Pinned CookieMonster commit (so updates don't break the hosted site unexpectedly).
+  var cookieMonsterModuleUrl = 'https://cdn.jsdelivr.net/gh/CookieMonsterTeam/CookieMonster@acd0fbbaf533b3ca4e252b536a992e6123637007/src/CookieMonster.js';
+
+  function tryLoad() {
+    if (window.Game) {
+      // Inject as module so relative imports inside CookieMonster work via the CDN.
+      var s = document.createElement('script');
+      s.type = 'module';
+      s.src = cookieMonsterModuleUrl;
+      s.onload = function(){ console.log('CookieMonster loaded'); };
+      s.onerror = function(e){ console.error('CookieMonster failed to load:', e); };
+      document.head.appendChild(s);
+      return true;
+    }
+    return false;
+  }
+
+  var wait = setInterval(function(){
+    if (tryLoad()) clearInterval(wait);
+  }, 200);
+})();
+</script>
 
 	
 <script src="showads.js"></script>
